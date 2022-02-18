@@ -41,7 +41,7 @@ segue alguns links para contato.
 - [![Linkedin Badge](https://img.shields.io/badge/-LinkedIn-blue?style=flat-square&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/luizgustavor/)
 - [Blog](https://luizdeaguiar.com.br/?lang=pt)
 
-# Agradeçimentos
+# Agradecimentos
 
 Esse repositório e tutorial foram feitos com base no curso
 [Selenium WebDriver with Python](https://testautomationu.applitools.com/selenium-webdriver-python-tutorial/)
