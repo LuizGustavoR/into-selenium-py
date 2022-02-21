@@ -42,7 +42,7 @@ Follow some contact links.
 
 # Thanks
 
-This reopsitory and tutorial were made based in the following course:\
+This repository and tutorial were made based in the following course:\
 [Selenium WebDriver with Python](https://testautomationu.applitools.com/selenium-webdriver-python-tutorial/)
 administred by [Andrew Knight](https://www.linkedin.com/in/andrew-leland-knight/).\
 He also have a [Blog](https://automationpanda.com/) :D.
