@@ -1,49 +1,48 @@
 # intro-seleniu-py
 
-Criei esse repositório com o objetivo de fixar os conhecimentos
-de automação de testes em python para aplicações web.
+I've created this repository with the objective to learn about python test automation for web applications.
 
-# Instruções de Setup
+# Setup Instructions
 
 ## Python Setup
 
-- Esse projeto precisa da versão Python 3.8 ou superior.
+- This project needs python version 3.8 or above.
 
-- Também precisa de pipenv.
+- Also needs pipenv.
 
 ## Webdriver Setup
 
-- Para o teste Web UI será necessário a versão estável mais nova do
+- For this UI Web test it will be necessary the chromedriver latest stable release:
 [Chromedriver](https://chromedriver.chromium.org/home).
 
-## Setup do projeto
+## Project Setup
 
-1. Clone esse repositório.
-2. Execute `cd intro-selenium-py` para entrar no projeto.
-3. Execute `pipenv install` para instalar as dependências.
-4. Execute `pipenv run python -m pytest` para validar que o framework consegue rodar os testes.
+1. Clone this repository.
+2. Run `cd intro-selenium-py` to enter into the project.
+3. Run `pipenv install` to install the dependencies.
+4. Run `pipenv run python -m pytest` to check that the framework can run the testes.
 
-## Mais detalhes do setup
+## More setup details
 
-- Esse repositório contém o projeto feito a partir do tutorial no meu blog.
-- Caso tenha dúvidas de como configurar o Python, o Pipenv ou o Webdriver na sua máquina,\
-segue o link das instruções no meu blog: [Selenium Webdriver com Python](https://luizdeaguiar.com.br/?lang=pt)
+- This repository have the project made from my blog tutorial.
+- In case you have any doubt on how to setup Python, Pipenv or Webdriver in your machine,\
+follow my blog link with the instructions: [Selenium Webdriver with Python](https://luizdeaguiar.com.br)
 
-# Projeto feito em Python
+# Project made with Python
 
 [![Python Badge](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 
-# Sobre o Autor
-Oi, meu nome é Luiz Gustavo,\
-Trabalho como QA Engineer.\
-segue alguns links para contato.
+# About the Author
+Hi, My name is Luiz Gustavo,\
+I work as a QA Engineer.\
+Follow some contact links.
 
 - [![Linkedin Badge](https://img.shields.io/badge/-LinkedIn-blue?style=flat-square&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/luizgustavor/)
-- [Blog](https://luizdeaguiar.com.br/?lang=pt)
+- [Blog](https://luizdeaguiar.com.br)
 
-# Agradecimentos
+# Thanks
 
-Esse repositório e tutorial foram feitos com base no curso
+This reopsitory and tutorial were made based in the following course:\
 [Selenium WebDriver with Python](https://testautomationu.applitools.com/selenium-webdriver-python-tutorial/)
-ministrado por [Andrew Knight](https://www.linkedin.com/in/andrew-leland-knight/).\
-Ele também possui um [Blog](https://automationpanda.com/) :D.
+administred by [Andrew Knight](https://www.linkedin.com/in/andrew-leland-knight/).\
+He also have a [Blog](https://automationpanda.com/) :D.
