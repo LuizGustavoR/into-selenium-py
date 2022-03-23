@@ -15,15 +15,15 @@ def test_basic_duckduckgo_search(browser, phrase):
     # Given the DuckDuckGo home page is displayed
     search_page.load()
    
-    # When the user searches for "panda"
+    # When the user searches for the phrase variable
     search_page.search(phrase)
  
-    # And the search result query is "panda"
+    # And the search result query is the phrase variable
     assert phrase == result_page.search_input_value()
  
-    # And the search result links pertain to "panda"
+    # And the search result links pertain to the phrase variable
     # for title in result_page.result_link_titles():
     #     assert PHRASE.lower() in title.lower()
  
-    # Then the search result title contains "panda"
+    # Then the search result title contains the phrase variable
     assert phrase in result_page.title()
