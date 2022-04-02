@@ -1,38 +1,32 @@
-version: "3" # The version of docker compose files.
-# Each container is a service.
+version: "3"
 services:
- 
+
   selenium-hub:
     image: selenium/hub
+    container_name: selenium-hub
     ports:
       - "4444:4444"
-    environment:
-        GRID_MAX_SESSION: 16 # Limit os browsers running on this grid.
-        GRID_BROWSER_TIMEOUT: 300
-        GRID_TIMEOUT: 300
- 
+
   chrome:
     image: selenium/node-chrome
-    # Means "selenium/node-chrome" has to wait "selenium-hub"
-    # to be up and running before this container is marked as successfully created.
+    shm_size: 2gb
     depends_on:
       - selenium-hub
     environment:
-      HUB_PORT_4444_TCP_ADDR: selenium-hub # Connect this container to " selenium-hub"
-      HUB_PORT_4444_TCP_PORT: 4444
-      # This container will have 2 chrome browsers on it.
-      NODE_MAX_SESSION: 2
-      NODE_MAX_INSTANCES: 2
-    # volumes:
-    #   - /dev/shm:/dev/shm
- 
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4444
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+      - SE_NODE_OVERRIDE_MAX_SESSIONS=true
+      - SE_NODE_MAX_SESSIONS=2
+
   firefox:
     image: selenium/node-firefox
+    shm_size: 2gb
     depends_on:
       - selenium-hub
     environment:
-      HUB_PORT_4444_TCP_ADDR: selenium-hub
-      HUB_PORT_4444_TCP_PORT: 4444
-      # This container will have 4 firefox browsers on it.
-      NODE_MAX_SESSION: 4
-      NODE_MAX_INSTANCES: 4
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4444
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+      - SE_NODE_OVERRIDE_MAX_SESSIONS=true
+      - SE_NODE_MAX_SESSIONS=4
