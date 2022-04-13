@@ -16,9 +16,12 @@ def config(scope='session'):
         config = json.load(config_file)
 
     # Accept values are acceptable
-    assert config['browser'] in ['Firefox', 'Chrome', 'Headless Chrome']
+    assert config['browser'] in ['Firefox', 'Chrome', 'Headless Firefox', 'Headless Chrome']
+    assert config['type'] in ['local', 'remote']
     assert isinstance(config['implicit_wait'], int)
     assert config['implicit_wait'] > 0
+    assert isinstance(config['url_remote'], str)
+    assert len(config['url_remote']) > 0
 
     # Return config so it can be used
     return config
@@ -27,19 +30,38 @@ def config(scope='session'):
 @pytest.fixture
 def browser(config):
  
-    # Initialize the WebDriver instance
-    if config['browser'] == 'Firefox':
-        b = selenium.webdriver.Firefox()
-    elif config['browser'] == 'Chrome':
-        b = selenium.webdriver.Chrome()
-    elif config['browser'] == 'Headless Chrome':
-        opts = selenium.webdriver.ChromeOptions()
-        opts.add_argument('headless')
-        opts.add_argument('--log-level=1')
-        b = selenium.webdriver.Chrome(options=opts)
-    else:
-        raise Exception(f'Browser "{config["browser"]}" is not supported')
- 
+    # Initialize the local WebDriver instance
+    if config['type'] == 'local':
+
+        if config['browser'] == 'Firefox':
+            b = selenium.webdriver.Firefox()
+            opts.add_argument('--window-size=1920,1080')
+            b = selenium.webdriver.Firefox(options=opts)
+        elif config['browser'] == 'Chrome':
+            opts = selenium.webdriver.ChromeOptions()
+            opts.add_argument('--window-size=1920,1080')
+            b = selenium.webdriver.Chrome(options=opts)
+        else:
+            raise Exception(f'Browser "{config["browser"]}" is not supported in local mode')
+
+    # Initialize the remote WebDriver instance
+    elif config['type'] == 'remote':
+
+        if config['browser'] == 'Headless Firefox':
+            opts = selenium.webdriver.FirefoxOptions()
+        elif config['browser'] == 'Headless Chrome':
+            opts = selenium.webdriver.ChromeOptions()
+        else:
+            raise Exception(f'Browser "{config["browser"]}" is not supported in remote mode')
+
+        opts.add_argument('--no-sandbox')
+        opts.add_argument('--headless')
+        opts.add_argument('--disable-gpu')
+        b = selenium.webdriver.Remote(
+            command_executor = config['url_remote'],
+            options=opts
+        )
+
     # Make its calls wait for elements to appear
     b.implicitly_wait(config['implicit_wait'])
  
