@@ -15,6 +15,18 @@ I've created this repository with the objective to learn about python test autom
 - For this UI Web test it will be necessary the chromedriver latest stable release:
 [Chromedriver](https://chromedriver.chromium.org/home).
 
+## Docker Setup
+
+- If you want to scale tests in you machine using docker follow the steps below:
+1. Intall docker in your machine.
+3. Pull the needed nodes (selenium/hub, selenium/node-chrome, selenium/node-firefox).
+4. Spin up nodes with the command "docker-compose up -d"
+5. Run the tests
+6. Shut down nodes with the command "docker-compose down".
+
+For more information using docker go to
+[Scaling Tests with Docker and Python](https://luizdeaguiar.com.br/2022/05/11/scaling-tests-with-docker-and-python/).
+
 ## Project Setup
 
 1. Clone this repository.
