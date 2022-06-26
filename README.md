@@ -20,9 +20,9 @@ I've created this repository with the objective to learn about python test autom
 - If you want to scale tests in you machine using docker follow the steps below:
 1. Intall docker in your machine.
 3. Pull the needed nodes (selenium/hub, selenium/node-chrome, selenium/node-firefox).
-4. Spin up nodes with the command "docker-compose up -d"
+4. Spin up nodes with the command `docker-compose up -d`
 5. Run the tests
-6. Shut down nodes with the command "docker-compose down".
+6. Shut down nodes with the command `docker-compose down`.
 
 For more information using docker go to
 [Scaling Tests with Docker and Python](https://luizdeaguiar.com.br/2022/05/11/scaling-tests-with-docker-and-python/).
@@ -33,6 +33,14 @@ For more information using docker go to
 2. Run `cd intro-selenium-py` to enter into the project.
 3. Run `pipenv install` to install the dependencies.
 4. Run `pipenv run python -m pytest` to check that the framework can run the testes.
+
+## Running test in parallel
+
+- The command to run test in parallel is the same to run a normal test, but in the end of the command you must add "-n" followed by the number of tests, for example:
+- Run `pipenv run python -m pytest -n 3`
+
+For more information running tests in parallel go to
+[Running Test in Parallel](https://luizdeaguiar.com.br/2022/03/24/running-test-in-parallel/).
 
 ## More setup details
 

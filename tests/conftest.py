@@ -4,7 +4,7 @@ This module contains shared fixture.
 
 import json
 import pytest
-import selenium.webdriver
+import selenium.webdriver as sw
 
 # scope='session' makes
 # this fixture run only one time before the entire test suite
@@ -34,13 +34,13 @@ def browser(config):
     if config['type'] == 'local':
 
         if config['browser'] == 'Firefox':
-            b = selenium.webdriver.Firefox()
+            opts = sw.FirefoxOptions()
             opts.add_argument('--window-size=1920,1080')
-            b = selenium.webdriver.Firefox(options=opts)
+            b = sw.Firefox(options=opts)
         elif config['browser'] == 'Chrome':
-            opts = selenium.webdriver.ChromeOptions()
+            opts = sw.ChromeOptions()
             opts.add_argument('--window-size=1920,1080')
-            b = selenium.webdriver.Chrome(options=opts)
+            b = sw.Chrome(options=opts)
         else:
             raise Exception(f'Browser "{config["browser"]}" is not supported in local mode')
 
@@ -48,16 +48,16 @@ def browser(config):
     elif config['type'] == 'remote':
 
         if config['browser'] == 'Headless Firefox':
-            opts = selenium.webdriver.FirefoxOptions()
+            opts = sw.FirefoxOptions()
         elif config['browser'] == 'Headless Chrome':
-            opts = selenium.webdriver.ChromeOptions()
+            opts = sw.ChromeOptions()
         else:
             raise Exception(f'Browser "{config["browser"]}" is not supported in remote mode')
 
         opts.add_argument('--no-sandbox')
         opts.add_argument('--headless')
         opts.add_argument('--disable-gpu')
-        b = selenium.webdriver.Remote(
+        b = sw.Remote(
             command_executor = config['url_remote'],
             options=opts
         )
