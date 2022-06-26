@@ -9,7 +9,8 @@ class DuckDuckGoResultPage:
  
   # Locators
   SEARCH_INPUT = (By.ID, 'search_form_input')
-  RESULT_LINKS = (By.CSS_SELECTOR, 'a.result__a')
+  # RESULT_LINKS = (By.CSS_SELECTOR, 'a.result__a')
+  RESULT_LINKS = (By.CSS_SELECTOR, 'a.eVNpHGjtxRBq_gLOfGDr')
  
   # Initializer
  
@@ -26,6 +27,7 @@ class DuckDuckGoResultPage:
     value = search_input.get_attribute('value')
     return value
  
+  # Return the text of the result links
   def result_link_titles(self):
     links = self.browser.find_elements(*self.RESULT_LINKS)
     titles = [link.text for link in links]

@@ -1,6 +1,6 @@
 {
-    "browser": "Headless Chrome",
-    "type": "remote",
+    "browser": "Chrome",
+    "type": "local",
     "implicit_wait": 10,
     "url_remote": "http://127.0.0.1:4444/wd/hub"
 }
