@@ -16,12 +16,32 @@ automação de testes em python para aplicações web.
 - Para o teste Web UI será necessário a versão estável mais nova do chromedriver:
 [Chromedriver](https://chromedriver.chromium.org/home).
 
+## Docker Setup
+
+- Caso você queirax escalar testes na sua máquina utilizando docker siga as instruções abaixo:
+1. Instale o docker na sua máquina.
+3. Faça o "Pull" dos nodes necessários (selenium/hub, selenium/node-chrome, selenium/node-firefox).
+4. Faça o "Spin up" dos nodes utilizando o comando `docker-compose up -d`
+5. Execute os testes
+6. Derrube os nodes com o comando `docker-compose down`.
+
+Para mais informação utilizando docker vá para
+[Escalando Testes com Docker e Python](https://luizdeaguiar.com.br/pt/2022/05/11/escalando-testes-com-docker-e-python/).
+
 ## Setup do projeto
 
 1. Clone esse repositório.
 2. Execute `cd intro-selenium-py` para entrar no projeto.
 3. Execute `pipenv install` para instalar as dependências.
 4. Execute `pipenv run python -m pytest` para validar que o framework consegue rodar os testes.
+
+## Executando tests em paralelo
+
+- O comando para executar testes em paralelo é o mesmo para executar um teste normal, mas no final do comando você deve adicionar "-n" seguido pelo número de testes, por exemplo:
+- Execute `pipenv run python -m pytest -n 3`
+
+Para mais informações executando testes em paralelo vá para
+[Executando Testes em Paralelo](https://luizdeaguiar.com.br/pt/2022/03/24/executando-testes-em-paralelo/).
 
 ## Mais detalhes do setup
 
