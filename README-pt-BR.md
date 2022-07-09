@@ -43,6 +43,11 @@ Para mais informação utilizando docker vá para
 Para mais informações executando testes em paralelo vá para
 [Executando Testes em Paralelo](https://luizdeaguiar.com.br/pt/2022/03/24/executando-testes-em-paralelo/).
 
+## Filtrando testes utilizando tags
+
+- Para que você execute os testes pelas tags utilize o mesmo comando para executar um teste normal, porém no final do comando adicione "-k" seguido pela tag que você quer executar em aspas duplas e sem o arroba, por exemplo:
+- Execute `pipenv run python -m pytest -k "web"`
+
 ## Mais detalhes do setup
 
 - Esse repositório contém o projeto feito a partir do tutorial no meu blog.
