@@ -42,6 +42,11 @@ For more information using docker go to
 For more information running tests in parallel go to
 [Running Test in Parallel](https://luizdeaguiar.com.br/2022/03/24/running-test-in-parallel/).
 
+## Filtering Tests with Tags
+
+- For you to run tests by their tag use the same command used to run a normal test, but in the end of the command you must add "-k" followed by the tag you want to run between double quotes and without the at, for example:
+- Run `pipenv run python -m pytest -k "web"`
+
 ## More setup details
 
 - This repository have the project made from my blog tutorial.

@@ -1,25 +1,29 @@
+@web
 Feature: DuckDuckGo Web Browsing
     As a web surfer,
     I want to find information online,
     So I can learn new things and get tasks done.
-
+ 
     Background:
         Given the DuckDuckGo home page is displayed
-
+   
+    @basic-search
     Scenario: Basic DuckDuckGo Result Title
         When the user searches for "panda"
         Then results title contains "panda"
-
+ 
+    @scenario-outline
     Scenario Outline: Basic DuckDuckGo Search
         When the user searches for <name>
         Then results are shown for <found_animal>
-
+ 
     Examples: Animals
         | name       | found_animal |
         | panda      | panda        |
         | python     | python       |
         | polar bear | polar bear   |
-
+ 
+    @basic-search @independence-search
     Scenario: Lengthy DuckDuckGo Search
         When the user searches for the phrase:
             """
