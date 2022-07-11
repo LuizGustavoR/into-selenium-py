@@ -1,4 +1,4 @@
-# intro-seleniu-py
+# intro-selenium-py
 
 I've created this repository with the objective to learn about python test automation for web applications.
 
