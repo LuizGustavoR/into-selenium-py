@@ -4,7 +4,9 @@ This module contains shared fixture.
 
 import json
 import pytest
-import selenium.webdriver as sw
+import selenium.webdriver as webdriver
+from pytest_bdd import given
+from pages.search import DuckDuckGoSearchPage
 
 # scope='session' makes
 # this fixture run only one time before the entire test suite
@@ -34,13 +36,13 @@ def browser(config):
     if config['type'] == 'local':
 
         if config['browser'] == 'Firefox':
-            opts = sw.FirefoxOptions()
+            opts = webdriver.FirefoxOptions()
             opts.add_argument('--window-size=1920,1080')
-            b = sw.Firefox(options=opts)
+            browser = webdriver.Firefox(options=opts)
         elif config['browser'] == 'Chrome':
-            opts = sw.ChromeOptions()
+            opts = webdriver.ChromeOptions()
             opts.add_argument('--window-size=1920,1080')
-            b = sw.Chrome(options=opts)
+            browser = webdriver.Chrome(options=opts)
         else:
             raise Exception(f'Browser "{config["browser"]}" is not supported in local mode')
 
@@ -48,25 +50,35 @@ def browser(config):
     elif config['type'] == 'remote':
 
         if config['browser'] == 'Headless Firefox':
-            opts = sw.FirefoxOptions()
+            opts = webdriver.FirefoxOptions()
         elif config['browser'] == 'Headless Chrome':
-            opts = sw.ChromeOptions()
+            opts = webdriver.ChromeOptions()
         else:
             raise Exception(f'Browser "{config["browser"]}" is not supported in remote mode')
 
         opts.add_argument('--no-sandbox')
         opts.add_argument('--headless')
         opts.add_argument('--disable-gpu')
-        b = sw.Remote(
+        browser = webdriver.Remote(
             command_executor = config['url_remote'],
             options=opts
         )
 
     # Make its calls wait for elements to appear
-    b.implicitly_wait(config['implicit_wait'])
+    browser.implicitly_wait(config['implicit_wait'])
  
     # Return the WebDriver instance for the setup
-    yield b
+    yield browser
  
     # Quit the WebDriver instance for the instance
-    b.quit
+    browser.quit()
+
+# Shared given steps
+@given('the DuckDuckGo home page is displayed', target_fixture="duckduckgo_home")
+def duckduckgo_home(browser):
+    DuckDuckGoSearchPage(browser).load()
+    pass
+
+# Hooks
+def pytest_bdd_step_error(request, feature, scenario, step, step_func, step_func_args, exception):
+    print(f'Step failed: {step}')
