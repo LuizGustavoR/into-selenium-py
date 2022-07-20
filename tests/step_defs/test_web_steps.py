@@ -8,7 +8,7 @@ from pages.result import DuckDuckGoResultPage
 
 scenarios('../features/web.feature')
 
-@when(parsers.parse('the user searches for "{text}"'))
+@when(parsers.parse('the user searches for "{text}"'), converters={"text": str})
 @when(parsers.parse('the user searches for {text}'))
 @when(parsers.parse('the user searches for the phrase:\n{text}'))
 def search_phrase(browser, text):

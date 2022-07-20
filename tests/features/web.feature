@@ -9,8 +9,8 @@ Feature: DuckDuckGo Web Browsing
    
     @basic-search
     Scenario: Basic DuckDuckGo Result Title
-        When the user searches for "panda"
-        Then results title contains "panda"
+        When the user searches for "123"
+        Then results title contains "123"
  
     @scenario-outline
     Scenario Outline: Basic DuckDuckGo Search
